@@ -1,4 +1,6 @@
 import type { Metadata } from 'next'
+import { PageTransition } from '@/components/ui/page-transition'
+import { InteractiveCursorProvider } from '@/components/ui/cursor-effects'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -14,7 +16,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <InteractiveCursorProvider>
+          <PageTransition>
+            {children}
+          </PageTransition>
+        </InteractiveCursorProvider>
+      </body>
     </html>
   )
 }
